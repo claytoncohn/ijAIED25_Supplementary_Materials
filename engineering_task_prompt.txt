@@ -1,0 +1,117 @@
+system* You are a helpful teacher's assistant whose job it is to score middle school students' short answer formative assessment question responses in the Earth Science domain.
+
+In this formative assessment, students complete an engineering task that requires them to evaluate two designs of a schoolyard on a 4x4 grid pursuant to several constraints.
+
+Students are presented with the following information:
+
+A fictitious student, Morgan, has created two different designs. Morgan wants to test both of her designs to see which one is better.
+
+Morgan tested her first design (Design1) with the following inputs:
+Rainfall_Inches = 6
+Building_Squares = 6
+Grassy_Squares = 4
+Play_Squares = 3
+Parking_Squares = 3
+Accessible_Squares = 8
+
+Design1 produced the following outputs:
+Runoff_Inches = 5.49
+Cost = $732,000
+
+Morgan tested her second design (Design2) with the following inputs:
+Rainfall_Inches = 3
+Building_Squares = 4
+Grassy_Squares = 3
+Play_Squares = 4
+Parking_Squares = 6
+Accessible_Squares = 5
+
+Design2 produced the following outputs:
+Runoff_Inches = 2.72
+Cost = $695,000
+
+The Engineering Constraints are as follows:
+Runoff_Constraint: The design must minimize the amount of runoff.
+Accessibility_Constraint: The design must include at least 6 accessible squares.
+Cost_Constraint: The cost of the design must be $750,000 or less.
+
+Based on this information, students are asked the following question:
+
+Can Morgan tell which design is better based on these tests? Explain why or why not.
+
+Students' responses adhere to the following format:
+Answer: [Yes or No]
+Explanation: [Justification for Answer]
+
+The correct Answer is 'No'. Morgan did not use the same amount of rainfall to test each design, so the tests are not fair and cannot be directly compared. Additionally, each of the two designs violates one constraint (Design1 does not minimize runoff, and Design2 does not have at least 6 accessible squares), so it is not possible for Morgan to tell which design is better.
+
+You are to score student responses on a scale of 0 to 4 points based on the following Rubric:
+4 points: The student indicates the two designs cannot be compared because Morgan used different rainfall values to test each design AND the student explains that the tests are not fair (because runoff cannot be equally compared for the two tests if different amounts of rainfall are used). The student does not have to explicitly use the word "fair" to receive credit. He or she can indicate that the tests are not fair by mentioning that the two tests are uneven, inconsistent, impossible to compare, etc. 
+3 points: The student indicates the two designs cannot be compared because the rainfall values are different but does not mention that the tests are not fair.
+2 points: The student indicates the two designs cannot be compared because each design violates one of the Engineering Constraints but does not mention the two tests have different amounts of rainfall.
+1 point: The student indicates the two designs cannot be compared but does not provide reasoning for his or her Answer (or gives an ambiguous explanation not related to the amount of rainfall or Engineering Constraints).
+0 points: The student says the two designs can be compared (regardless of his or her explanation), or the student provides any other response not meeting the Rubric criteria for 1, 2, 3, or 4 points.
+
+While scoring students' responses, you are to adhere to the following Rules:
+1. Students should be awarded the greatest number of points they qualify for. For instance, if a student mentions both engineering constraints (2 points) and unequal rainfall (3 points), the student should be awarded the greater of the two (3 points).
+2. Whether or not a test is "fair" is solely based on whether or not the amounts of rainfall are equal for the two tests. If, for example, a student says that the test is not fair because there are different amounts of runoff or that the rainfall is not in inches, the student cannot be awarded 3 points (or 4 points) because this rationale is incorrect and does not satisfy the Rubric.
+3. You are to cite evidence directly from the student's response to justify your scores.
+
+Based on all of this information, score the following student's formative assessment response pursuant to the Rubric. Please provide your scores as a JSON document that conforms to the following schema:
+
+{
+	"generation" : string,
+	"score" : int
+}
+&&&
+user* Answer: Yes
+Explanation: I think the one on the bottom is better because I think it has more absorption than runoff. Runoff leads to floods.
+&&&
+assistant* {
+	"generation" :"The student says 'I think the one on the bottom is better because I think it has more absorption than runoff'. While this indicates the student understands the design constraints (Runoff_Constraint, in this case), the student's Answer is 'Yes' (i.e., the student says the two designs can be compared). The Rubric states that students who determine the two designs can be compared are entitled to 0 points. Based on the Rubric, the student earned a score of 0.",
+	"score" : 0
+}
+&&&
+user* Answer: No
+Explanation: She can not compare her two designs because she ran the code, but for each design she did a different amount of rainfall, It would have to be the same amount of rainfall to compare the output results.
+&&&
+assistant* {
+	"generation" :"The student provides an Answer of 'No' and says 'for each design she did a different amount of rainfall'. This indicates the student understands that the designs cannot be compared because the rainfall values are different. However, the student failed to mention that the tests are not fair as a result. Based on the Rubric, the student earned a score of 3.",
+	"score" : 3
+}
+&&&
+user* Answer: No
+Explanation: She can't because she isn't having a fair test because she didn't add the same runoff for both modals.
+&&&
+assistant* {
+	"generation" :"The student says 'she isn't having a fair test because she didn't add the same runoff for both modals'. While the student mentions that the two tests are not fair, Rule 2 tells us that fair tests are only determined by whether or not the amounts of rainfall are equal for the two tests and that saying the test is not fair because of different amounts of runoff cannot be awarded 3 or 4 points. Additionally, the student fails to discuss the Engineering Constraints, so he or she cannot be awarded 2 points either. However, because the student's Answer is 'No', this indicates that the student understands the two designs cannot be compared. Based on the Rubric, the student earned a score of 1.",
+	"score" : 1
+}
+&&&
+user* Answer: No
+Explanation: No because the first one has to much rainfall, and the second one doesn't have enough assessable squares.
+&&&
+assistant* {
+	"generation" :"The student starts by saying 'No because the first one has to much rainfall'. Because the student only mentions the amount of rainfall and does not explicitly discuss the difference in rainfall between the two designs, the student is ineligible to be awarded 3 or 4 points. However, the student does indicate he or she understands the two designs cannot be compared by providing an Answer of 'No' and also discusses the Accessibility_Constraint in the Engineering Constraints by saying 'the second one doesn't have enough assessable squares'. Based on the Rubric, the student earned a score of 2.",
+	"score" : 2
+}
+&&&
+user* Answer: No
+Explanation: Morgan has different inches of rainfall which means that it is not equal or fair.
+&&&
+assistant* {
+	"generation" :"The student indicates he or she understands the two designs cannot be compared by providing an Answer of 'No'. Additionally, the student says 'Morgan has different inches of rainfall', which demonstrates the student understands Morgan used different rainfall values to test each design. The student also mentions that 'it is not equal or fair', which indicates the student understands that the tests are not fair. The student's response, therefore, meets the Rubric criteria for a maximum score of 4 points. Based on the Rubric, the student earned a score of 4.",
+	"score" : 4
+}
+&&&
+user* Answer: No
+Explanation: You cannot determine which is better because you could have a different need and be okay with the deficit in absorption and cost when the accessible squares are higher like if you had more children who would need accessible squares.
+&&&
+assistant* {
+	"generation" : "The student provides an Answer of 'No', which demonstrates he or she understands the two designs cannot be compared. The student elaborates by saying 'You cannot determine which is better because you could have a different need', which indicates a general understanding of the trade-offs between the Engineering Constraints. Additionally, the student provides specific references to the Engineering Constraints by mentioning 'the deficit in absorption and cost when the accessible squares are higher'. This shows the student has a focused understanding of the Engineering Constraint considerations, as he or she mentions 'accessible squares' (Accessibility_Constraint), 'deficit in absorption' (Runoff_Constraint), and 'cost' (Cost_Constraint). While the student did not mention the different rainfall values and is therefore ineligible to receive 3 or 4 points, both the student's general and focused understanding of the Engineering Constraints qualify him or her for 2 points, pursuant to the Rubric. Based on the Rubric, the student earned a score of 2.",
+	"score" : 2
+}
+&&&
+user* [INSERT INSTANCE HERE]
+&&&
+assistant* 

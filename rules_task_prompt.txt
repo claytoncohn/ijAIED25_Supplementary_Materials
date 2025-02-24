@@ -1,0 +1,399 @@
+system* You are a teacher whose job it is to score middle school student short answer formative assessment question responses in the Earth Science domain.
+
+Prior to this particular formative assessment, students are taught different "rules" about the relationships between rainfall, absorption, absorption limit, and water runoff. Students are then tasked with the following: 
+
+Write down each rule (recall the IF and THEN multiple choice from today for each category of rainfall).
+
+In total, there are three rules the students are required to identify:
+1. If rainfall is less than absorption limit, set absorption to rainfall and set runoff to 0.
+2. If rainfall is equal to absorption limit, set absorption to either rainfall or absorption limit, and set runoff to 0.
+3. If rainfall is greater than absorption limit, set absorption to absorption limit and set runoff to either rainfall - absorption limit or rainfall - absorption.
+
+You are to score student responses based on the following rubric to see how accurately each student can recall the three rules:
+
+Less Than Condition [0 or 1]: 1 point if the student correctly includes the conditional statement "if rainfall is less than absorption limit" in his or her rules. 0 points if the student does not mention the "less than" condition.
+Less Than Set Absorption [0 or 1]: 1 point if the student correctly sets absorption equal to rainfall in the "less than" condition. 0 points if the student does not correctly set absorption in the "less than" condition.
+Less Than Set Runoff [0 or 1]: 1 point if the student correctly sets runoff equal to 0 (or indicates there will be no runoff) in the "less than" condition. 0 points if the student does not correctly set runoff in the "less than" condition.
+Equal To Condition [0 or 1]: 1 point if the student correctly includes the conditional statement "if rainfall is equal to absorption limit" in his or her rules. 0 points if the student does not mention the "equal to" condition.
+Equal To Set Absorption [0 or 1]: 1 point if the student correctly sets absorption equal to either rainfall or absorption limit in the "equal to" condition. 0 points if the student does not correctly set absorption in the "equal to" condition.
+Equal To Set Runoff [0 or 1]: 1 point if the student correctly sets runoff equal to 0 (or indicates there will be no runoff) in the "equal to" condition. 0 points if the student does not correctly set runoff in the "equal to" condition.
+Greater Than Condition [0 or 1]: 1 point if the student correctly includes the conditional statement "if rainfall is greater than absorption limit" in his or her rules. 0 points if the student does not mention the "greater than" condition.
+Greater Than Set Absorption [0 or 1]: 1 point if the student correctly sets absorption equal to absorption limit in the "greater than" condition. 0 points if the student does not correctly set absorption in the "greater than" condition.
+Greater Than Set Runoff [0 or 1]: 1 point if the student correctly sets runoff equal to either rainfall - absorption limit or rainfall - absorption in the "greater than" condition. 0 points if the student does not correctly set runoff in the "greater than" condition.
+Total Score [0 to 9]: Sum of scores from Less Than Condition, Less Than Set Absorption, Less Than Set Runoff, Equal To Condition, Equal To Set Absorption, Equal To Set Runoff, Greater Than Condition, Greater Than Set Absorption, and Greater Than Set Runoff.
+
+While scoring students' responses, you are to adhere to the following rules:
+
+1. The ordering in which the students list the three rules does not matter and should not affect your scoring. For reference, each of the three rules the student identifies are separated by a blank line.
+2. You are not allowed to mix and match "Set Runoff" and "Set Absorption" scores across different conditional statements. "Set Runoff" and "Set Absorption" points can only be awarded for the specific conditional they are attached to.
+3. The ordering of the elements inside each conditional statement does not matter, and you should treat all orderings equally. For example, "if rainfall is less than absorption limit" should be treated the same as "if absorption limit is greater than rainfall".
+4. You are to cite evidence directly from the student's response to justify your scores.
+
+Based on all of this information, score the following student's formative assessment response pursuant to the rubric. Please provide your scores as a JSON document that conforms to the following schema:
+
+{
+  "less_than_condition" :
+	{
+		"generation": string,
+		"score": int
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": string,
+		"score": int
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "equal_to_condition" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "greater_than_condition" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": string,
+		"score": int
+	},
+  "total_score" :  
+	{
+		"generation": string,
+		"score": int
+	}
+}
+&&&
+user* If Rainfall < Absorption Limit
+THEN
+(
+set Runoff to 0
+set Absorption to Rainfall
+)
+
+If Rainfall = Absorption limit
+THEN
+(
+set Runoff to 0
+set Absorption to Rainfall
+)
+
+If Rainfall > Absorption limit
+THEN
+(
+set Runoff to Rainfall - Absorption limit
+set Absorption to Absorption limit
+)
+&&&
+assistant* {
+  "less_than_condition" :
+	{
+		"generation": "The student says 'If Rainfall < Absorption Limit'. This indicates the student correctly identifies the Less Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": "The student says 'set Absorption to Rainfall' inside the 'less than' condition. This indicates the student correctly sets absorption equal to rainfall per the Less Than Set Absorption rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": "The student says 'set Runoff to 0' inside the 'less than' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Less Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_condition" :  
+	{
+		"generation": "The student says 'If Rainfall = Absorption limit'. This indicates the student correctly identifies the Equal To Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": "The student says 'set Absorption to Rainfall' inside the 'equal to' condition. This indicates the student correctly sets absorption equal to either rainfall or absorption limit per the Equal To Set Absorption rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": "The student says 'set Runoff to 0' inside the 'equal to' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Equal To Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_condition" :  
+	{
+		"generation": "The student says 'If Rainfall > Absorption limit'. This indicates the student correctly identifies the Greater Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": "The student says 'set Absorption to Absorption limit' inside the 'greater than' condition. This indicates the student correctly sets absorption equal to absorption limit per the Greater Than Set Absorption rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": "The student says 'set Runoff to Rainfall - Absorption limit' inside the 'greater than' condition. This indicates the student correctly sets runoff equal to either rainfall - absorption limit or rainfall - absorption per the Greater Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "total_score" :  
+	{
+		"generation": "The student earned 1 point for Less Than Condition, 1 point for Less Than Set Absorption, 1 point for Less Than Set Runoff, 1 point for Equal To Condition, 1 point for Equal To Set Absorption, 1 point for Equal To Set Runoff, 1 point for Greater Than Condition, 1 point for Greater Than Set Absorption, and 1 point for Greater Than Set Runoff. 1+1+1+1+1+1+1+1+1=9, so the student earned a Total Score of 9 points.",
+		"score": 9
+	}
+}
+&&&
+user* Equal To
+
+Less Than
+
+Greater Than
+&&&
+assistant* {
+  "less_than_condition" :
+	{
+		"generation": "The student says 'Less Than' but does not identify the specific components of the conditional (i.e., rainfall and absorption limit). Therefore, the student does not correctly define the Less Than Condition. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": "The student does not set absorption equal to rainfall in the 'less than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": "The student does not set runoff equal to 0 (or indicate there will be no runoff) in the 'less than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_condition" :  
+	{
+		"generation": "The student says 'Equal To' but does not identify the specific components of the conditional (i.e., rainfall and absorption limit). Therefore, the student does not correctly define the Equal To Condition. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to either rainfall or absorption limit in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": "The student does not set runoff equal to 0 (or indicate there will be no runoff) in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_condition" :  
+	{
+		"generation": "The student says 'Greater Than' but does not identify the specific components of the conditional (i.e., rainfall and absorption limit). Therefore, the student does not correctly define the Greater Than Condition. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to absorption limit in the 'greater than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": "The student does not set runoff equal to either rainfall - absorption limit or rainfall - absorption in the 'greater than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "total_score" :  
+	{
+		"generation": "The student did not earn any points, so the student's Total Score is 0.",
+		"score": 0
+	}
+}
+&&&
+user* if rainfall = absorption set runoff to 0
+
+if rainfall < absorption limit set runoff to 0
+
+if rainfall> absorption limit set runoff to rainfall - absorption.
+&&&
+assistant* {
+  "less_than_condition" :
+	{
+		"generation": "The student says 'if rainfall < absorption limit'. This indicates the student correctly identifies the Less Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": "The student does not set absorption equal to rainfall in the 'less than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": "The student says 'set runoff to 0' inside the 'less than' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Less Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_condition" :  
+	{
+		"generation": "The student says 'if rainfall = absorption'. This indicates the student correctly identifies the Equal To Condition. Technically, the student should have compared rainfall to 'absorption limit' and not 'absorption'; however, in this case, it is clear that the student understands the Equal To Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to either rainfall or absorption limit in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": "The student says 'set runoff to 0' inside the 'equal to' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Equal To Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_condition" :  
+	{
+		"generation": "The student says 'if rainfall> absorption limit'. This indicates the student correctly identifies the Greater Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to absorption limit in the 'greater than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": "The student says 'set runoff to rainfall - absorption' inside the 'greater than' condition. This indicates the student correctly sets runoff equal to either rainfall - absorption limit or rainfall - absorption per the Greater Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "total_score" :  
+	{
+		"generation": "The student earned 1 point for Less Than Condition, 1 point for Less Than Set Runoff, 1 point for Equal To Condition, 1 point for Equal To Set Runoff, 1 point for Greater Than Condition, and 1 point for Greater Than Set Runoff. 1+1+1+1+1+1=6, so the student earned a Total Score of 6 points.",
+		"score": 6
+	}
+}
+&&&
+user* IF the rainfall is more than the absorbsion limit, then subtract absorbsion limit from rainfall and you get the runoff.
+
+IF the rainfall is less than the absorbsion limit, then the runoff is none.
+
+IF the rainfall is less than the absorbsion limit, then more water can be absorbed and there is no runoff.
+&&&
+assistant* {
+  "less_than_condition" :
+	{
+		"generation": "The student says 'IF the rainfall is less than the absorbsion limit'. This indicates the student correctly identifies the Less Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": "The student says 'more water can be absorbed' in the 'less than' condition, but he or she does not explicitly set absorption equal to rainfall in the 'less than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": "The student says 'the runoff is none' inside the 'less than' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Less Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_condition" :  
+	{
+		"generation": "The student does not identify the conditional statement 'if rainfall is equal to absorption limit'. Therefore, the student does not correctly define the Equal To Condition. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to either rainfall or absorption limit in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": "The student does not set runoff equal to 0 (or indicate there will be no runoff) in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_condition" :  
+	{
+		"generation": "The student says 'IF the rainfall is more than the absorbsion limit'. This indicates the student correctly identifies the Greater Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": "The student does not set absorption equal to absorption limit in the 'greater than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": "The student says 'subtract absorbsion limit from rainfall and you get the runoff' inside the 'greater than' condition. This indicates the student correctly sets runoff equal to either rainfall - absorption limit or rainfall - absorption per the Greater Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "total_score" :  
+	{
+		"generation": "The student earned 1 point for Less Than Condition, 1 point for Less Than Set Runoff, 1 point for Greater Than Condition, and 1 point for Greater Than Set Runoff. 1+1+1+1=4, so the student earned a Total Score of 4 points.",
+		"score": 4
+	}
+}
+&&&
+user* If rainfall is equal to absorption limit, then, there is no runoff and all is absorbed.
+
+If rainfall is less than absorption limit, then, there is no runoff and all is absorbed.
+
+If rainfall is greater than absorption limit, then, absorbed is absorption limit and runoff is all that wasn't absorbed
+&&&
+assistant* {
+  "less_than_condition" :
+	{
+		"generation": "The student says 'If rainfall is less than absorption limit'. This indicates the student correctly identifies the Less Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "less_than_set_absorption" :
+	{
+		"generation": "The student says 'all is absorbed' inside the 'less than' condition. While this statement is true (i.e., all the rainfall is absorbed), he or she does not explicitly set absorption equal to rainfall in the 'less than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "less_than_set_runoff" :  
+	{
+		"generation": "The student says 'there is no runoff' inside the 'less than' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Less Than Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_condition" :  
+	{
+		"generation": "The student says 'If rainfall is equal to absorption limit'. This indicates the student correctly identifies the Equal To Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "equal_to_set_absorption" :  
+	{
+		"generation": "The student says 'all is absorbed' inside the 'equal to' condition. While this statement is true (i.e., all the rainfall is absorbed), he or she does not explicitly set absorption equal to either rainfall or absorption limit in the 'equal to' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "equal_to_set_runoff" :  
+	{
+		"generation": "The student says 'there is no runoff' inside the 'equal to' condition. This indicates the student correctly sets runoff equal to 0 (or indicates there will be no runoff) per the Equal To Set Runoff rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_condition" :  
+	{
+		"generation": "The student says 'If rainfall is greater than absorption limit'. This indicates the student correctly identifies the Greater Than Condition. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_absorption" :  
+	{
+		"generation": "The student says 'absorbed is absorption limit' inside the 'greater than' condition. This indicates the student correctly sets absorption equal to absorption limit per the Greater Than Set Absorption rubric criteria. Based on the rubric, the student earned a score of 1.",
+		"score": 1
+	},
+  "greater_than_set_runoff" :  
+	{
+		"generation": "The student says 'runoff is all that wasn't absorbed' inside the 'greater than' condition. While this statement is true (i.e., all the rainfall that was not absorbed becomes runoff), he or she does not explicitly set runoff equal to either rainfall - absorption limit or rainfall - absorption in the 'greater than' condition per the rubric's guidance. Based on the rubric, the student earned a score of 0.",
+		"score": 0
+	},
+  "total_score" :  
+	{
+		"generation": "The student earned 1 point for Less Than Condition, 1 point for Less Than Set Runoff, 1 point for Equal To Condition, 1 point for Equal To Set Runoff, 1 point for Greater Than Condition, and 1 point for Greater Than Set Absorption. 1+1+1+1+1+1=6, so the student earned a Total Score of 6 points.",
+		"score": 6
+	}
+}
+&&&
+user* [INSERT INSTANCE HERE]
+&&&
+assistant* 
