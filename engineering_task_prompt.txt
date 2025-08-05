@@ -111,7 +111,3 @@ assistant* {
 	"generation" : "The student provides an Answer of 'No', which demonstrates he or she understands the two designs cannot be compared. The student elaborates by saying 'You cannot determine which is better because you could have a different need', which indicates a general understanding of the trade-offs between the Engineering Constraints. Additionally, the student provides specific references to the Engineering Constraints by mentioning 'the deficit in absorption and cost when the accessible squares are higher'. This shows the student has a focused understanding of the Engineering Constraint considerations, as he or she mentions 'accessible squares' (Accessibility_Constraint), 'deficit in absorption' (Runoff_Constraint), and 'cost' (Cost_Constraint). While the student did not mention the different rainfall values and is therefore ineligible to receive 3 or 4 points, both the student's general and focused understanding of the Engineering Constraints qualify him or her for 2 points, pursuant to the Rubric. Based on the Rubric, the student earned a score of 2.",
 	"score" : 2
 }
-&&&
-user* [INSERT INSTANCE HERE]
-&&&
-assistant* 

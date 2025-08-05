@@ -393,7 +393,3 @@ assistant* {
 		"score": 6
 	}
 }
-&&&
-user* [INSERT INSTANCE HERE]
-&&&
-assistant* 
